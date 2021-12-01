@@ -1,7 +1,12 @@
 #include "days.h"
 
-void day_1() {
-    FILE* in_file = fopen("in_1.txt", "r");
+void day_1(execution_info_t* execution_info) {
+    char* file_name = "in_1.txt";
+    if(execution_info->has_parameter) {
+        file_name = execution_info->program_parameter;
+    }
+
+    FILE* in_file = fopen(file_name, "r");
     if(in_file == NULL) {
         ERR("Day 1", "Failed to open file!");
         return;

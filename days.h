@@ -3,7 +3,13 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "log.h"
 
-void day_1();
+typedef struct execution_info_t {
+    bool has_parameter;
+    char* program_parameter;
+} execution_info_t;
+
+void day_1(execution_info_t* execution_info);
 #endif

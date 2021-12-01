@@ -3,4 +3,4 @@ project(advent_of_code C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(advent_of_code main.c log.h)
+add_executable(advent_of_code main.c log.h days.h day_1.c)

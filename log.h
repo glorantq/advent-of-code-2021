@@ -1,11 +1,16 @@
 #ifndef ADVENT_OF_CODE_LOG_H
 #define ADVENT_OF_CODE_LOG_H
 
+#include <stdio.h>
+
 #define LOG_DEBUG 4
 #define LOG_INFO 3
 #define LOG_WARN 2
 #define LOG_ERR 1
 #define LOG_OFF 0
+
+#define UNDERLINE(x) "\033[4m" x "\033[0m"
+#define LOG_LEVEL LOG_DEBUG
 
 #define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
 

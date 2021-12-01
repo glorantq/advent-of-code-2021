@@ -11,7 +11,15 @@ int main(int argc, char** argv) {
         WARN("AdventOfCode-C", "No parameter specified! Using defaults...");
     }
 
-    day_1(execution_info);
+    void (*methods[])(execution_info_t*) = {
+        day_1
+    };
+
+    int methods_size = sizeof(methods) / sizeof(void (*)(execution_info_t*));
+    for(int i = 0; i < methods_size; i++) {
+        methods[i](execution_info);
+    }
+
     SUCCESS("AdventOfCode-C", "🎄 Complete");
 
     free(execution_info);

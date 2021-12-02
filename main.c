@@ -1,4 +1,4 @@
-#include "days.h"
+#include "solutions/days.h"
 
 int main(int argc, char** argv) {
     execution_info_t* execution_info = malloc(sizeof(execution_info_t));
@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
     }
 
     void (*methods[])(execution_info_t*) = {
-        day_1
+        day_1, day_2
     };
 
     int methods_size = sizeof(methods) / sizeof(void (*)(execution_info_t*));

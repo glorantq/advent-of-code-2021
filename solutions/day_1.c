@@ -1,6 +1,6 @@
 #include "days.h"
 
-void day_1(execution_info_t* execution_info) {
+DAY_FUNC(day_1) {
     char* file_name = "in_1.txt";
     if(execution_info->has_parameter) {
         file_name = execution_info->program_parameter;

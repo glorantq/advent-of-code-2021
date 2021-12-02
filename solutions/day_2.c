@@ -1,5 +1,4 @@
 #include "days.h"
-#include "../util/files.h"
 
 typedef enum direction_t {
     FORWARD, UP, DOWN
@@ -60,29 +59,18 @@ direction_t convert_direction(char* dir_string) {
 }
 
 DAY_FUNC(day_2) {
-    char* file_name = "in_2.txt";
-    if(execution_info->parameter_count > 1) {
-        file_name = execution_info->program_parameters[1];
-    }
+    OPEN_DAY_INPUT(2, "in_2.txt");
+    READ_DAY_INPUT(in_file);
 
-    FILE* in_file = fopen(file_name, "r");
-    if(in_file == NULL) {
-        ERR("Day 2", "Failed to open file!");
-        return;
-    }
-
-    unsigned long read_lines_count = 0;
-    char** read_lines = read_file_lines(in_file, &read_lines_count);
-
-    if(read_lines == NULL) {
+    if(file_lines == NULL) {
         ERR("Day 2", "Failed to read input file!");
         return;
     }
 
     command_t* list = create_command(UP, 0);
 
-    for(unsigned long i = 0; i < read_lines_count; i++) {
-        char* line = *(read_lines + i);
+    for(unsigned long i = 0; i < file_lines_count; i++) {
+        char* line = *(file_lines + i);
 
         char* space_position = strchr(line, ' ');
 
@@ -107,9 +95,9 @@ DAY_FUNC(day_2) {
         free(direction_str);
     }
 
-    DEBUG_("Day 2", "Read %lu commands", read_lines_count);
+    DEBUG_("Day 2", "Read %lu commands", file_lines_count);
 
-    free_file_lines(read_lines, read_lines_count);
+    free_file_lines(file_lines, file_lines_count);
 
     int horizontal_position = 0;
     int depth = 0;

@@ -1,20 +1,8 @@
 #include "days.h"
-#include "../util/files.h"
 
 DAY_FUNC(day_1) {
-    char* file_name = "in_1.txt";
-    if(execution_info->parameter_count > 0) {
-        file_name = execution_info->program_parameters[0];
-    }
-
-    FILE* in_file = fopen(file_name, "r");
-    if(in_file == NULL) {
-        ERR("Day 1", "Failed to open file!");
-        return;
-    }
-
-    unsigned long file_lines_count = 0;
-    char** file_lines = read_file_lines(in_file, &file_lines_count);
+    OPEN_DAY_INPUT(1, "in_1.txt");
+    READ_DAY_INPUT(in_file);
 
     if(file_lines == NULL) {
         ERR("Day 1", "Failed to read input file!");

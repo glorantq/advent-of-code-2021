@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(advent_of_code C)
+project(advent_of_code DESCRIPTION "Advent of Code 2021" HOMEPAGE_URL "https://glorantv.web.elte.hu/" LANGUAGES "C")
 
 set(CMAKE_C_STANDARD 99)
 

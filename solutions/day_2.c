@@ -1,4 +1,5 @@
 #include "days.h"
+#include "../util/files.h"
 
 typedef enum direction_t {
     FORWARD, UP, DOWN
@@ -70,17 +71,24 @@ DAY_FUNC(day_2) {
         return;
     }
 
-    unsigned long line_size = sizeof(char) * 64;
-    char* line_read = malloc(line_size);
+    unsigned long read_lines_count = 0;
+    char** read_lines = read_file_lines(in_file, &read_lines_count);
+
+    if(read_lines == NULL) {
+        ERR("Day 2", "Failed to read input file!");
+        return;
+    }
 
     command_t* list = create_command(UP, 0);
 
-    while(getline(&line_read, &line_size, in_file) != EOF) {
-        char* space_position = strchr(line_read, ' ');
+    for(unsigned long i = 0; i < read_lines_count; i++) {
+        char* line = *(read_lines + i);
 
-        unsigned long direction_length = (space_position - line_read) + 1;
+        char* space_position = strchr(line, ' ');
+
+        unsigned long direction_length = (space_position - line) + 1;
         char* direction_str = malloc(sizeof(char) * direction_length);
-        memcpy(direction_str, line_read, direction_length - 1);
+        memcpy(direction_str, line, direction_length - 1);
         direction_str[direction_length - 1] = '\0';
 
         char* movement_remainder;
@@ -99,7 +107,9 @@ DAY_FUNC(day_2) {
         free(direction_str);
     }
 
-    free(line_read);
+    DEBUG_("Day 2", "Read %lu commands", read_lines_count);
+
+    free_file_lines(read_lines, read_lines_count);
 
     int horizontal_position = 0;
     int depth = 0;

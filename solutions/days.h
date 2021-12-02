@@ -15,5 +15,6 @@ typedef struct execution_info_t {
 
 DAY_FUNC(day_1);
 DAY_FUNC(day_2);
+DAY_FUNC(day_3);
 
 #endif

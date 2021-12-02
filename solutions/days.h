@@ -9,8 +9,8 @@
 #define DAY_FUNC(name) void name (execution_info_t* execution_info)
 
 typedef struct execution_info_t {
-    bool has_parameter;
-    char* program_parameter;
+    int parameter_count;
+    char** program_parameters;
 } execution_info_t;
 
 DAY_FUNC(day_1);

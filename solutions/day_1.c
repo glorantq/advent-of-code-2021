@@ -2,8 +2,8 @@
 
 DAY_FUNC(day_1) {
     char* file_name = "in_1.txt";
-    if(execution_info->has_parameter) {
-        file_name = execution_info->program_parameter;
+    if(execution_info->parameter_count > 0) {
+        file_name = execution_info->program_parameters[0];
     }
 
     FILE* in_file = fopen(file_name, "r");

@@ -60,8 +60,8 @@ direction_t convert_direction(char* dir_string) {
 
 DAY_FUNC(day_2) {
     char* file_name = "in_2.txt";
-    if(execution_info->has_parameter) {
-        file_name = execution_info->program_parameter;
+    if(execution_info->parameter_count > 1) {
+        file_name = execution_info->program_parameters[1];
     }
 
     FILE* in_file = fopen(file_name, "r");

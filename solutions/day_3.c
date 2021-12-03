@@ -62,6 +62,7 @@ int* get_numbers_matching_criteria(const int numbers[], int array_length, int cr
     return numbers_out;
 }
 
+// I'm smarter than the IDE 😎
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "DanglingPointer"
 int find_generator_rating(int numbers[], int array_length, bool invert, int places) {

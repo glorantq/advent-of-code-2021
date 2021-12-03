@@ -43,6 +43,10 @@ int most_common_bit(const int numbers[], int array_size, int place, bool* eq) {
 
 int* get_numbers_matching_criteria(const int numbers[], int array_length, int criteria, int place, int* out_size) {
     int* numbers_out = malloc(sizeof(int) * array_length);
+    if(numbers_out == NULL) {
+        return NULL;
+    }
+
     int count = 0;
 
     for(int i = 0; i < array_length; i++) {
@@ -62,6 +66,10 @@ int find_generator_rating(int numbers[], int array_length, bool invert, int plac
     bool eq = false;
 
     int* work = malloc(sizeof(int) * array_length);
+    if(work == NULL) {
+        return 0;
+    }
+
     memcpy(work, numbers, sizeof(int) * array_length);
 
     for(int i = 0; i < places; i++) {
@@ -76,6 +84,10 @@ int find_generator_rating(int numbers[], int array_length, bool invert, int plac
         }
 
         int* matching = get_numbers_matching_criteria(work, array_length, check_bit, places - i - 1, &array_length);
+        if(matching == NULL) {
+            break;
+        }
+
         free(work);
         work = matching;
 
@@ -96,6 +108,14 @@ DAY_FUNC(day_3) {
     READ_DAY_INPUT(in_file);
 
     int* numbers = malloc(sizeof(int) * file_lines_count);
+    if(numbers == NULL) {
+        ERR("Day 3", "Failed to allocate memory!");
+
+        free_file_lines(file_lines, file_lines_count);
+        fclose(in_file);
+        return;
+    }
+
     memset(numbers, 0, sizeof(int) * file_lines_count);
 
     unsigned int most_bits = 0;

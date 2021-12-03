@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
     }
 
     void (*methods[])(execution_info_t*) = {
-        day_1, day_2, day_3
+        day_1, day_2, day_3, day_4
     };
 
     int methods_size = sizeof(methods) / sizeof(void (*)(execution_info_t*));

@@ -59,11 +59,12 @@ direction_t convert_direction(char* dir_string) {
 }
 
 DAY_FUNC(day_2) {
-    OPEN_DAY_INPUT(2, "in_2.txt");
+    OPEN_DAY_INPUT(2, "in_2.txt")
     READ_DAY_INPUT(in_file);
 
     if(file_lines == NULL) {
         ERR("Day 2", "Failed to read input file!");
+        fclose(in_file);
         return;
     }
 
@@ -74,7 +75,12 @@ DAY_FUNC(day_2) {
 
         char* space_position = strchr(line, ' ');
 
-        unsigned long direction_length = (space_position - line) + 1;
+        long direction_length = (space_position - line) + 1;
+        if(direction_length <= 0) {
+            ERR("Day 2", "Invalid command!");
+            continue;
+        }
+
         char* direction_str = malloc(sizeof(char) * direction_length);
         memcpy(direction_str, line, direction_length - 1);
         direction_str[direction_length - 1] = '\0';
@@ -151,4 +157,5 @@ DAY_FUNC(day_2) {
     LOG_("Day 2", "Final position (aim): " UNDERLINE("%d"), horizontal_position * depth);
 
     free_list(list);
+    fclose(in_file);
 }

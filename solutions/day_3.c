@@ -62,6 +62,8 @@ int* get_numbers_matching_criteria(const int numbers[], int array_length, int cr
     return numbers_out;
 }
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "DanglingPointer"
 int find_generator_rating(int numbers[], int array_length, bool invert, int places) {
     bool eq = false;
 
@@ -102,10 +104,17 @@ int find_generator_rating(int numbers[], int array_length, bool invert, int plac
     free(work);
     return 0;
 }
+#pragma clang diagnostic pop
 
 DAY_FUNC(day_3) {
-    OPEN_DAY_INPUT(3, "in_3.txt");
+    OPEN_DAY_INPUT(3, "in_3.txt")
     READ_DAY_INPUT(in_file);
+
+    if(file_lines == NULL) {
+        ERR("Day 3", "Failed to read input file!");
+        fclose(in_file);
+        return;
+    }
 
     int* numbers = malloc(sizeof(int) * file_lines_count);
     if(numbers == NULL) {

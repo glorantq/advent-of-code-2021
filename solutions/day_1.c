@@ -1,16 +1,18 @@
 #include "days.h"
 
 DAY_FUNC(day_1) {
-    OPEN_DAY_INPUT(1, "in_1.txt");
+    OPEN_DAY_INPUT(1, "in_1.txt")
     READ_DAY_INPUT(in_file);
 
     if(file_lines == NULL) {
         ERR("Day 1", "Failed to read input file!");
+        fclose(in_file);
         return;
     }
 
     unsigned long array_size = sizeof(int) * file_lines_count;
     int* in_depths = malloc(array_size);
+    memset(in_depths, 0, array_size);
 
     for(unsigned long i = 0; i < file_lines_count; i++) {
         char* line = *(file_lines + i);

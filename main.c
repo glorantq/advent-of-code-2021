@@ -1,4 +1,9 @@
-#include "solutions/days.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "log.h"
+#include "solutions/days_def.h"
 
 int main(int argc, char **argv) {
     execution_info_t *execution_info = malloc(sizeof(execution_info_t));

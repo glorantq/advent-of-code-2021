@@ -134,7 +134,7 @@ DAY_FUNC(day_3) {
         *(numbers + i) = decode_number(line);
     }
 
-    DEBUG_("Day 3", "Converted %lu binary numbers...", file_lines_count);
+    DEBUG("Day 3", "Converted %lu binary numbers...", file_lines_count);
 
     unsigned int mask = 0;
     for(int i = 0; i < most_bits; i++) {
@@ -149,11 +149,11 @@ DAY_FUNC(day_3) {
 
     unsigned int epsilon_rate = (~gamma_rate) & mask;
 
-    LOG_("Day 3", "Power consumption: " UNDERLINE("%d"), gamma_rate * epsilon_rate);
+    LOG("Day 3", "Power consumption: " UNDERLINE("%d"), gamma_rate * epsilon_rate);
 
     int oxygen_rating = find_generator_rating(numbers, (int) file_lines_count, false, (int) most_bits);
     int dioxide_rating = find_generator_rating(numbers, (int) file_lines_count, true, (int) most_bits);
-    LOG_("Day 3", "Life support rating: " UNDERLINE("%d"), oxygen_rating * dioxide_rating);
+    LOG("Day 3", "Life support rating: " UNDERLINE("%d"), oxygen_rating * dioxide_rating);
 
     free(numbers);
 

@@ -94,7 +94,7 @@ DAY_FUNC(day_2) {
         free(direction_str);
     }
 
-    DEBUG_("Day 2", "Read %lu commands", file_lines_count);
+    DEBUG("Day 2", "Read %lu commands", file_lines_count);
 
     int horizontal_position = 0;
     int depth = 0;
@@ -121,7 +121,7 @@ DAY_FUNC(day_2) {
         _list = _list->next;
     }
 
-    LOG_("Day 2", "Final position: " UNDERLINE("%d"), horizontal_position * depth);
+    LOG("Day 2", "Final position: " UNDERLINE("%d"), horizontal_position * depth);
 
     horizontal_position = 0;
     depth = 0;
@@ -145,7 +145,7 @@ DAY_FUNC(day_2) {
         _list = _list->next;
     }
 
-    LOG_("Day 2", "Final position (aim): " UNDERLINE("%d"), horizontal_position * depth);
+    LOG("Day 2", "Final position (aim): " UNDERLINE("%d"), horizontal_position * depth);
 
     free_list(list);
     DAY_FUNC_END

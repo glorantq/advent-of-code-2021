@@ -20,7 +20,7 @@ DAY_FUNC(day_1) {
         }
     }
 
-    DEBUG_("Day 1", "Read %lu depths", file_lines_count);
+    DEBUG("Day 1", "Read %lu depths", file_lines_count);
 
     int increase_count = 0;
     for(int i = 1; i < file_lines_count; i++) {
@@ -32,7 +32,7 @@ DAY_FUNC(day_1) {
         }
     }
 
-    LOG_("Day 1", "Depth increase count: " UNDERLINE("%d"), increase_count);
+    LOG("Day 1", "Depth increase count: " UNDERLINE("%d"), increase_count);
 
     increase_count = 0;
     int previous_sum = in_depths[0] + in_depths[1] + in_depths[2];
@@ -50,7 +50,7 @@ DAY_FUNC(day_1) {
         previous_sum = sum;
     }
 
-    LOG_("Day 1", "Depth increase count (3-sum): " UNDERLINE("%d"), increase_count);
+    LOG("Day 1", "Depth increase count (3-sum): " UNDERLINE("%d"), increase_count);
 
     free(in_depths);
     DAY_FUNC_END

@@ -107,14 +107,7 @@ int find_generator_rating(int numbers[], int array_length, bool invert, int plac
 #pragma clang diagnostic pop
 
 DAY_FUNC(day_3) {
-    OPEN_DAY_INPUT(3, "in_3.txt")
-    READ_DAY_INPUT(in_file);
-
-    if(file_lines == NULL) {
-        ERR("Day 3", "Failed to read input file!");
-        fclose(in_file);
-        return;
-    }
+    DAY_BOILERPLATE("Day 3", 3, "in_3.txt")
 
     int* numbers = malloc(sizeof(int) * file_lines_count);
     if(numbers == NULL) {
@@ -142,9 +135,6 @@ DAY_FUNC(day_3) {
 
     DEBUG_("Day 3", "Converted %lu binary numbers...", file_lines_count);
 
-    free_file_lines(file_lines, file_lines_count);
-    fclose(in_file);
-
     unsigned int mask = 0;
     for(int i = 0; i < most_bits; i++) {
         mask |= 1 << i;
@@ -165,4 +155,6 @@ DAY_FUNC(day_3) {
     LOG_("Day 3", "Life support rating: " UNDERLINE("%d"), oxygen_rating * dioxide_rating);
 
     free(numbers);
+
+    DAY_FUNC_END
 }

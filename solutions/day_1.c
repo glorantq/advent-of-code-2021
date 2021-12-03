@@ -1,14 +1,7 @@
 #include "days.h"
 
 DAY_FUNC(day_1) {
-    OPEN_DAY_INPUT(1, "in_1.txt")
-    READ_DAY_INPUT(in_file);
-
-    if(file_lines == NULL) {
-        ERR("Day 1", "Failed to read input file!");
-        fclose(in_file);
-        return;
-    }
+    DAY_BOILERPLATE("Day 1", 1, "in_1.txt")
 
     unsigned long array_size = sizeof(int) * file_lines_count;
     int* in_depths = malloc(array_size);
@@ -28,7 +21,6 @@ DAY_FUNC(day_1) {
     }
 
     DEBUG_("Day 1", "Read %lu depths", file_lines_count);
-    free_file_lines(file_lines, file_lines_count);
 
     int increase_count = 0;
     for(int i = 1; i < file_lines_count; i++) {
@@ -61,5 +53,5 @@ DAY_FUNC(day_1) {
     LOG_("Day 1", "Depth increase count (3-sum): " UNDERLINE("%d"), increase_count);
 
     free(in_depths);
-    fclose(in_file);
+    DAY_FUNC_END
 }

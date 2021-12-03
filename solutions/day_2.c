@@ -59,14 +59,7 @@ direction_t convert_direction(char* dir_string) {
 }
 
 DAY_FUNC(day_2) {
-    OPEN_DAY_INPUT(2, "in_2.txt")
-    READ_DAY_INPUT(in_file);
-
-    if(file_lines == NULL) {
-        ERR("Day 2", "Failed to read input file!");
-        fclose(in_file);
-        return;
-    }
+    DAY_BOILERPLATE("Day 2", 2, "in_2.txt")
 
     command_t* list = create_command(UP, 0);
 
@@ -102,8 +95,6 @@ DAY_FUNC(day_2) {
     }
 
     DEBUG_("Day 2", "Read %lu commands", file_lines_count);
-
-    free_file_lines(file_lines, file_lines_count);
 
     int horizontal_position = 0;
     int depth = 0;
@@ -157,5 +148,5 @@ DAY_FUNC(day_2) {
     LOG_("Day 2", "Final position (aim): " UNDERLINE("%d"), horizontal_position * depth);
 
     free_list(list);
-    fclose(in_file);
+    DAY_FUNC_END
 }

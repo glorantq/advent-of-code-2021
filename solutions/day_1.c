@@ -40,7 +40,6 @@ DAY_FUNC(day_1) {
 
     LOG_("Day 1", "Depth increase count: " UNDERLINE("%d"), increase_count);
 
-
     increase_count = 0;
     int previous_sum = in_depths[0] + in_depths[1] + in_depths[2];
 

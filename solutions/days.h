@@ -30,9 +30,9 @@ typedef struct execution_info_t {
     char **program_parameters;
 } execution_info_t;
 
-#define CMAKE_TYPE_HACK (execution_info_t* execution_info)
-#define CMAKE_SEMICOLON_HACK ;
-
-SOLUTION_METHOD_DEFINITIONS
+DAY_FUNC(day_1);
+DAY_FUNC(day_2);
+DAY_FUNC(day_3);
+DAY_FUNC(day_4);
 
 #endif

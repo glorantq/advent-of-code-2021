@@ -12,5 +12,6 @@ DAY_FUNC(day_1);
 DAY_FUNC(day_2);
 DAY_FUNC(day_3);
 DAY_FUNC(day_4);
+DAY_FUNC(day_5);
 
 #endif

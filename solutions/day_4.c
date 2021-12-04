@@ -104,23 +104,19 @@ bool check_winner(bingo_board_t board) {
 
     for(int i = 0; i < 5; i++) {
         bool _row_marked = true;
+        bool _col_marked = true;
+
         bingo_value_t** row = *(board + i);
 
         for(int j = 0; j < 5; j++) {
             bingo_value_t* value = *(row + j);
             _row_marked = _row_marked && value->marked;
+
+            bingo_value_t* value_col = *(*(board + j) + i);
+            _col_marked = _col_marked && value_col->marked;
         }
 
         has_row_marked = has_row_marked || _row_marked;
-    }
-
-    for(int i = 0; i < 5; i++) {
-        bool _col_marked = true;
-        for(int j = 0; j < 5; j++) {
-            bingo_value_t* value = *(*(board + j) + i);
-            _col_marked = _col_marked && value->marked;
-        }
-
         has_col_marked = has_col_marked || _col_marked;
     }
 
@@ -222,7 +218,7 @@ DAY_FUNC(day_4) {
         WARN("Day 4", "No winner boards?");
     }
 
-    if(loser_idx > 0) {
+    if(loser_idx >= 0) {
         bingo_board_t loser_board = *(board_array + loser_idx);
         debug_print_board(loser_board);
         LOG("Day 4", "Board %d lost with a score of: " UNDERLINE("%d"), loser_idx + 1, calculate_sum_of_unmarked(loser_board) * num_when_lost);

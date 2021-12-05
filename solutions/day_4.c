@@ -106,10 +106,8 @@ bool check_winner(bingo_board_t board) {
         bool _row_marked = true;
         bool _col_marked = true;
 
-        bingo_value_t** row = *(board + i);
-
         for(int j = 0; j < 5; j++) {
-            bingo_value_t* value = *(row + j);
+            bingo_value_t* value = *(*(board + i) + j);
             _row_marked = _row_marked && value->marked;
 
             bingo_value_t* value_col = *(*(board + j) + i);

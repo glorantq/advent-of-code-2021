@@ -8,7 +8,13 @@
 #include "../util/files.h"
 #include "days_def.h"
 
-#define OPEN_DAY_INPUT(day_str, day_n, file_name_param) char* file_name = file_name_param; \
+#ifndef NDEBUG
+#define INPUT_PATH_PREFIX "../input/"
+#else
+#define INPUT_PATH_PREFIX "./"
+#endif
+
+#define OPEN_DAY_INPUT(day_str, day_n, file_name_param) char* file_name = INPUT_PATH_PREFIX file_name_param; \
                                          if(execution_info->parameter_count > (day_n) - 1) { file_name = execution_info->program_parameters[(day_n) - 1];  } \
                                          FILE* in_file = fopen(file_name, "r"); \
                                          if(in_file == NULL) { ERR(day_str, "Failed to open input file!"); return; }

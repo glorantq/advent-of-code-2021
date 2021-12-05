@@ -1,4 +1,5 @@
 #include "days.h"
+#include "../util/math.h"
 
 typedef struct line_segment_t {
     int x1, x2, y1, y2;
@@ -53,7 +54,7 @@ void plot_line(int** array, line_segment_t* line_segment) {
         int x_dist = (line_segment->x2 - line_segment->x1) * x_mul + 1;
         int y_dist = (line_segment->y2 - line_segment->y1) * y_mul + 1;
 
-        int dist = x_dist > y_dist ? x_dist : y_dist;
+        int dist = MAX(x_dist, y_dist);
 
         for(int i = 0; i < dist; i++) {
             int px = line_segment->x1 + x_mul * i;
@@ -107,21 +108,8 @@ DAY_FUNC(day_5) {
     for(unsigned long i = 0; i < line_segments_used; i++) {
         line_segment_t* line_segment = *(line_segments + i);
 
-        if(line_segment->y1 > max_y) {
-            max_y = line_segment->y1;
-        }
-
-        if(line_segment->y2 > max_y) {
-            max_y = line_segment->y2;
-        }
-
-        if(line_segment->x1 > max_x) {
-            max_x = line_segment->x1;
-        }
-
-        if(line_segment->x2 > max_x) {
-            max_x = line_segment->x2;
-        }
+        max_x = MAX(max_x, MAX(line_segment->x1, line_segment->x2));
+        max_y = MAX(max_y, MAX(line_segment->y1, line_segment->y2));
     }
 
     int plot_row_count = max_x + 1;

@@ -25,7 +25,7 @@ void debug_print_plot(int** arr, int rows, int cols) {
 
     for(int i = 0; i < rows; i++) {
         for(int j = 0; j < cols; j++) {
-            int val = arr[i][j];
+            int val = *(*(arr + i) + j);
 
             if(val > 0) {
                 printf("%d", val);
@@ -76,6 +76,7 @@ int get_two_overlap(int** array, int rows, int cols) {
 
         memset(*(array + i), 0, sizeof(int) * cols);
     }
+
     return two_overlap;
 }
 

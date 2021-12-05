@@ -64,6 +64,7 @@ void free_board(bingo_board_t board) {
 }
 
 void debug_print_board(bingo_board_t board) {
+#if LOG_LEVEL >= LOG_DEBUG
     for(int i = 0; i < 5; i++) {
         bingo_value_t** row = *(board + i);
 
@@ -78,6 +79,7 @@ void debug_print_board(bingo_board_t board) {
 
         printf("\n");
     }
+#endif
 }
 
 bingo_board_t parse_board(char** file_lines, int starting_line_idx) {

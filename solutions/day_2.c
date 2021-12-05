@@ -81,11 +81,6 @@ DAY_FUNC(day_2) {
         char* movement_remainder;
         int movement_amount = (int) strtol(space_position + 1, &movement_remainder, 10);
 
-        if(strlen(movement_remainder) != 1) {
-            ERR("Day 2", "Failed to parse number!");
-            continue;
-        }
-
         command_t* new_command = create_command(UP, movement_amount);
         new_command->direction = convert_direction(direction_str);
         new_command->amount = movement_amount;

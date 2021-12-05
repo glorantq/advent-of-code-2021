@@ -12,12 +12,7 @@ DAY_FUNC(day_1) {
 
         char* depth_remainder;
         int depth_converted = (int) strtol(line, &depth_remainder, 10);
-
-        if(strlen(depth_remainder) == 0 || (strlen(depth_remainder) == 1 && depth_remainder[0] == '\n')) {
-            in_depths[i] = depth_converted;
-        } else {
-            ERR("Day 1", "Failed to parse number!");
-        }
+        in_depths[i] = depth_converted;
     }
 
     DEBUG("Day 1", "Read %lu depths", file_lines_count);

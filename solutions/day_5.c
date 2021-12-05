@@ -102,15 +102,10 @@ DAY_FUNC(day_5) {
     DEBUG("Day 5", "Read %d line segments...", line_segments_used);
 
     int max_x = 0;
-    int min_x = 0;
     int max_y = 0;
-    int min_y = 0;
 
     for(unsigned long i = 0; i < line_segments_used; i++) {
         line_segment_t* line_segment = *(line_segments + i);
-        if(line_segment->y1 < min_y) {
-            min_y = line_segment->y1;
-        }
 
         if(line_segment->y1 > max_y) {
             max_y = line_segment->y1;
@@ -120,14 +115,6 @@ DAY_FUNC(day_5) {
             max_y = line_segment->y2;
         }
 
-        if(line_segment->y2 < min_y) {
-            min_y = line_segment->y2;
-        }
-
-        if(line_segment->x1 < min_x) {
-            min_x = line_segment->x1;
-        }
-
         if(line_segment->x1 > max_x) {
             max_x = line_segment->x1;
         }
@@ -135,16 +122,12 @@ DAY_FUNC(day_5) {
         if(line_segment->x2 > max_x) {
             max_x = line_segment->x2;
         }
-
-        if(line_segment->x2 < min_x) {
-            min_x = line_segment->x2;
-        }
     }
 
-    int plot_row_count = max_x - min_x + 1;
-    int plot_col_count = max_y - min_y + 1;
+    int plot_row_count = max_x + 1;
+    int plot_col_count = max_y + 1;
 
-    DEBUG("Day 5", "minX: %d, maxX: %d, minY: %d, maxY: %d, arr: %dx%d", min_x, max_x, min_y, max_y, plot_row_count, plot_col_count);
+    DEBUG("Day 5", "maxX: %d, maxY: %d, arr: %dx%d", max_x, max_y, plot_row_count, plot_col_count);
 
     int** plot_row_array = malloc(sizeof(int*) * plot_row_count);
     memset(plot_row_array, 0, sizeof(int*) * plot_row_count);

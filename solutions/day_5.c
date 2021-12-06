@@ -18,7 +18,7 @@ line_segment_t* create_line_segment(int x1, int y1, int x2, int y2) {
 }
 
 void debug_print_plot(int** arr, int rows, int cols) {
-#ifndef NDEBUG
+#if LOG_LEVEL >= LOG_DEBUG
     if(cols > 10 || rows > 10) {
         WARN("Day 5", "You really shouldn't run this with the actual input...");
         return;

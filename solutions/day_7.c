@@ -66,7 +66,7 @@ DAY_FUNC(day_7) {
     }
 
     LOG("Day 7", "Min. fuel needed: " UNDERLINE("%d"), min_fuel);
-    LOG("Day 7", "Min. fuel needed (factorial): " UNDERLINE("%d"), min_fuel_fac);
+    LOG("Day 7", "Min. fuel needed (sum_n): " UNDERLINE("%d"), min_fuel_fac);
 
     free(crabs_positions);
     DAY_FUNC_END

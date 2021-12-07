@@ -1,4 +1,5 @@
 #include "days.h"
+#include "../util/strings.h"
 
 typedef struct bingo_value_t {
     int number;
@@ -6,19 +7,6 @@ typedef struct bingo_value_t {
 } bingo_value_t;
 
 typedef bingo_value_t*** bingo_board_t;
-
-int count_character(char* string, char c) {
-    unsigned long string_length = strlen(string);
-    int counter = 0;
-
-    for(unsigned long i = 0; i < string_length; i++) {
-        if(string[i] == c) {
-            counter++;
-        }
-    }
-
-    return counter;
-}
 
 bingo_value_t* create_value(int value) {
     bingo_value_t* bingo_value = malloc(sizeof(bingo_value_t));

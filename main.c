@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
 
     void (*methods[])(execution_info_t*) = {
             day_1, day_2, day_3, day_4, day_5,
-            day_6, day_7, day_8
+            day_6, day_7, day_8, day_9
     };
 
     int methods_size = sizeof(methods) / sizeof(void (*)(execution_info_t*));

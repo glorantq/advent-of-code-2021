@@ -19,7 +19,7 @@ int sum_n_halt(int n, int acc, int halt) {
 }
 
 DAY_FUNC(day_7) {
-    DAY_BOILERPLATE("Day 7", 7, "in_7.txt")
+    DAY_BOILERPLATE("Day 7", 7, "in_7_test.txt")
 
     int crabs_count = count_character(*file_lines, ',') + 1;
     int crabs_count_used = 0;

@@ -126,8 +126,6 @@ DAY_FUNC(day_10) {
         }
 
         if(expected != '\0') {
-            printf("Expected: %c, but found %c instead.\n", expected, found);
-
             switch (found) {
                 case '}':
                     syntax_score += 1197;

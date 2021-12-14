@@ -95,6 +95,8 @@ DAY_FUNC(day_14) {
             char insert = *strtok(NULL, " -> ");
 
             *(insertion_mapping + TO_IDX(TO_INT(*find), TO_INT(*(find + 1)))) = insert;
+
+            free(find);
         }
 
         free(line);

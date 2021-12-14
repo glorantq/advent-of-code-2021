@@ -22,5 +22,6 @@ DAY_FUNC(day_11);
 DAY_FUNC(day_12);
 DAY_FUNC(day_13);
 DAY_FUNC(day_14);
+DAY_FUNC(day_15);
 
 #endif

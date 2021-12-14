@@ -179,7 +179,13 @@ void walk_paths(cave_t* cave, cave_t* path, int* out_count, bool (*cave_filter)(
 }
 
 DAY_FUNC(day_12) {
-    DAY_BOILERPLATE("Day 12", 12, "in_12.txt")
+    #ifdef NDEBUG
+        #define FILE_NAME "in_12.txt";
+    #else
+        #define FILE_NAME "in_12_test.txt";
+    #endif
+
+    DAY_BOILERPLATE("Day 12", 12, FILE_NAME)
 
     int cave_list_used = 0;
     cave_t** cave_list = malloc(sizeof(cave_t*) * file_lines_count);
